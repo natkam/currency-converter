@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <p>Hello! This is a currency calculator created with React.</p>
-      <Calculator/>
+      <Calculator />
     </div>
   );
 }
