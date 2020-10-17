@@ -1,17 +1,12 @@
 import React from 'react';
 import './App.css';
-import { Button } from './components/Button'
-
-const day = 'Saturday'
-
+import { Calculator } from './components/Calculator';
 
 function App() {
   return (
     <div className="App">
-      <p>Hello! Today is {day}</p>
-      <Button>Don't click me</Button>
-      <Button color="yellow">DUPA</Button>
-      <Button>Another one</Button>
+      <p>Hello! This is a currency calculator created with React.</p>
+      <Calculator/>
     </div>
   );
 }

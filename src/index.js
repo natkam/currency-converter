@@ -16,7 +16,7 @@ ReactDOM.render(
 // Component 'Footer' has to be defined somewhere, ofc.
 ReactDOM.render(
   <React.StrictMode>
-    <Footer /> 
+    <Footer />
   </React.StrictMode>,
   document.getElementById('footer')
 );
