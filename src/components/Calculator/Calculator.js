@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Button } from '../Button';
 import CurrencySelect from './CurrencySelect';
 
 // With class-based components, it would be:
@@ -11,26 +12,58 @@ import CurrencySelect from './CurrencySelect';
 
 
 function Calculator() {
+  const [currencies, setCurrencies] = useState([]);
   const [amount, setAmount] = useState(0);
   const [currencyFrom, setCurrencyFrom] = useState("EUR");
   const [currencyTo, setCurrencyTo] = useState("PLN");
+  const [result, setResult] = useState(0);
+
+  useEffect(() => {
+    fetch('https://api.ratesapi.io/api/latest?base=PLN')
+      .then(resp => resp.json())
+      .then(data => {
+        setCurrencies(Object.keys(data.rates))
+      });
+    return () => {
+      // clearInterval()
+      // removeEventListener()
+      // etc.
+    }
+
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch(`https://api.ratesapi.io/api/latest?base=${currencyFrom}`)
+      .then(resp => resp.json())
+      .then(data => {
+        setResult(amount * data.rates[currencyTo]);
+      });
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
         <input type="number" placeholder="Amount" onChange={
           (event) => setAmount(event.target.value)} />
       </div>
       <div>
         <span>From: </span>
-        <CurrencySelect currency={currencyFrom} setCurrency={setCurrencyFrom} />
+        <CurrencySelect
+          currencies={currencies}
+          currency={currencyFrom}
+          setCurrency={setCurrencyFrom} />
       </div>
       <div>
         <span>To: </span>
-        <CurrencySelect currency={currencyTo} setCurrency={setCurrencyTo} />
+        <CurrencySelect
+          currencies={currencies}
+          currency={currencyTo}
+          setCurrency={setCurrencyTo} />
       </div>
       <div>
-        <span>Result: {amount} {currencyFrom}</span>
+        <span>Result: {result} {currencyTo}</span>
       </div>
+      <Button type="submit">Send</Button>
     </form>
   );
 }
