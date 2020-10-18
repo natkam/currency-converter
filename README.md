@@ -18,6 +18,12 @@ npx create-react-app converter
 ```
 This creates the folder and the basic project structure.
 
+Also [React Router](https://reactrouter.com/web) was installed:
+```
+npm install react-router-dom
+```
+
+
 To run the app, in the project folder:
 ```
 npm start

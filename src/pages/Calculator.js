@@ -41,30 +41,33 @@ function Calculator() {
       });
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <input type="number" placeholder="Amount" onChange={
-          (event) => setAmount(event.target.value)} />
-      </div>
-      <div>
-        <span>From: </span>
-        <CurrencySelect
-          currencies={currencies}
-          currency={currencyFrom}
-          setCurrency={setCurrencyFrom} />
-      </div>
-      <div>
-        <span>To: </span>
-        <CurrencySelect
-          currencies={currencies}
-          currency={currencyTo}
-          setCurrency={setCurrencyTo} />
-      </div>
-      <div>
-        <span>Result: {result} {currencyTo}</span>
-      </div>
-      <Button type="submit">Send</Button>
-    </form>
+    <>
+      <h1>Hello! This is a shitty currency calculator created with React.</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <input type="number" placeholder="Amount" onChange={
+            (event) => setAmount(event.target.value)} />
+        </div>
+        <div>
+          <span>From: </span>
+          <CurrencySelect
+            currencies={currencies}
+            currency={currencyFrom}
+            setCurrency={setCurrencyFrom} />
+        </div>
+        <div>
+          <span>To: </span>
+          <CurrencySelect
+            currencies={currencies}
+            currency={currencyTo}
+            setCurrency={setCurrencyTo} />
+        </div>
+        <div>
+          <span>Result: {result} {currencyTo}</span>
+        </div>
+        <Button type="submit">Send</Button>
+      </form>
+    </>
   );
 }
 
