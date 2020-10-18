@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../components/Button';
-import { CurrencySelect } from '../components/Calculator';
+import { CurrencySelect, Result } from '../components/Calculator';
 
 // With class-based components, it would be:
 // state = {
@@ -62,12 +62,11 @@ function Calculator() {
             currency={currencyTo}
             setCurrency={setCurrencyTo} />
         </div>
-        <div>
-          {/* TODO: Render the result conditionally */}
-          <span>Result: {result} {currencyTo}</span>
-        </div>
         <Button type="submit">Send</Button>
       </form>
+      <div>
+        <Result result={result} currency={currencyTo} />
+      </div>
     </>
   );
 }
