@@ -8,7 +8,7 @@ import { CurrencySelect } from '../components/Calculator';
 //   currencyFrom: 'EUR',
 //   currencyTo: 'PLN',
 // }
-// this.setState({ currencyFrom: event.target.value }, () => { callback })
+// this.setState({ currencyFrom: event.target.value }, () => { // callback (optional) })
 
 
 function Calculator() {
@@ -42,7 +42,7 @@ function Calculator() {
   }
   return (
     <>
-      <h1>Hello! This is a shitty currency calculator created with React.</h1>
+      <h1>Hello! This is a hideous currency calculator created with React.</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <input type="number" placeholder="Amount" onChange={
@@ -63,6 +63,7 @@ function Calculator() {
             setCurrency={setCurrencyTo} />
         </div>
         <div>
+          {/* TODO: Render the result conditionally */}
           <span>Result: {result} {currencyTo}</span>
         </div>
         <Button type="submit">Send</Button>

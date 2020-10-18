@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
   return (
-    <p className="Footer">DUPA</p>
+    <p className="Footer">Cool footer content</p>
   );
 }
 
