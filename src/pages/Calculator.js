@@ -16,7 +16,7 @@ function Calculator() {
   const [amount, setAmount] = useState(0);
   const [currencyFrom, setCurrencyFrom] = useState("EUR");
   const [currencyTo, setCurrencyTo] = useState("PLN");
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState(null);
 
   useEffect(() => {
     fetch('https://api.ratesapi.io/api/latest?base=PLN')
@@ -34,11 +34,13 @@ function Calculator() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`https://api.ratesapi.io/api/latest?base=${currencyFrom}`)
-      .then(resp => resp.json())
-      .then(data => {
-        setResult(amount * data.rates[currencyTo]);
-      });
+    if (amount && Number(amount) !== 0) {
+      fetch(`https://api.ratesapi.io/api/latest?base=${currencyFrom}`)
+        .then(resp => resp.json())
+        .then(data => {
+          setResult(`${amount * data.rates[currencyTo]} ${currencyTo}`);
+        });
+    }
   }
   return (
     <>
@@ -64,9 +66,7 @@ function Calculator() {
         </div>
         <Button type="submit">Send</Button>
       </form>
-      <div>
-        <Result result={result} currency={currencyTo} />
-      </div>
+      {result && <Result result={result} />}
     </>
   );
 }
