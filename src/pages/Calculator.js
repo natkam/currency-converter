@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '../Button';
-import CurrencySelect from './CurrencySelect';
+import { Button } from '../components/Button';
+import { CurrencySelect } from '../components/Calculator';
 
 // With class-based components, it would be:
 // state = {

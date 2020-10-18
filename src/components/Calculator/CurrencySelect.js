@@ -1,7 +1,6 @@
 import React from 'react';
 
 function CurrencySelect({ currencies, currency, setCurrency }) {
-
   return (
     <select value={currency} onChange={(event) => setCurrency(event.target.value)}>
       {currencies.map((elem) =>

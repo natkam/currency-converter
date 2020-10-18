@@ -12,7 +12,8 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you are rewriting an existing app to React, you can render components separately.
+// If you are rewriting an existing app to React,
+// you can render components separately.
 // Component 'Footer' has to be defined somewhere, ofc.
 ReactDOM.render(
   <React.StrictMode>
