@@ -2,9 +2,9 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Link,
   Route,
 } from 'react-router-dom';
+import { Menu } from './components/Header';
 import Calculator from './pages/Calculator';
 import Contact from './pages/Contact';
 import About from './pages/About';
@@ -14,11 +14,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <ul>
-          <li><Link to="">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-        </ul>
+        <Menu />
         <Switch>
           <Route path="/" exact>
             <Calculator />
